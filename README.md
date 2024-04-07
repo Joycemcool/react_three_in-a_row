@@ -49,16 +49,28 @@
 2. HTML.
 3. CSS.
 
+### Dependency
+1. Node >= 14 on your local development machine
+2. `npm i react-router-dom --save styled-components`
+3. `npm install react-icons --save`
+
 ### Editor
 * VS Code
 
 ## Acknowledgement 
 1. Most of the requirement and content are from Delano Marques's course *Client side Technology*
 
+## Learning React source
+[React dev](https://react.dev/)
+[Codecademy React Cheatsheets](https://www.codecademy.com/learn/react-101/modules/learn-react-components/cheatsheet)
+[]()
+[]()
 ## About how to write a readme
 [Reference article :what-is-readme-md-file](https://www.geeksforgeeks.org/what-is-readme-md-file/)
 [Static Badge](https://shields.io/badges)
 [Markdownguide](https://www.markdownguide.org/basic-syntax/#reference-style-links )
+
+
 
 ## Links
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
