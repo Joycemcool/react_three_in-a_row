@@ -19,6 +19,7 @@
 3. The React application will make use of React Routing to allow both the sample game grid and a random one to be chosen via links.
 
 ![HomePage](https://github.com/NSCC-ITC-Fall2023-PROG2700-700-MDe/assignment-5c-Joycemcool/blob/master/public/images/HomePage.png)
+![HomePage](./public/images/RandomPage.png)
     <!-- <img src="./three-in-a-row/public/images/HomePage.png">Sample Tic-Tac-Toe</img>
     <img src="./three-in-a-row/public/images/SamplePage.png">Sample Tic-Tac-Toe</img>
     <img src="./three-in-a-row/public/images/RandomPage.png">Sample Tic-Tac-Toe</img> -->
