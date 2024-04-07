@@ -21,8 +21,8 @@
 <div align="center">
     <img src="./three-in-a-row/public/images/HomePage.png">Sample Tic-Tac-Toe</img>
     <img src="./three-in-a-row/public/images/SamplePage.png">Sample Tic-Tac-Toe</img>
-        <img src="./three-in-a-row/public/images/RandomPage.png">Sample Tic-Tac-Toe</img>
-</a>
+    <img src="./three-in-a-row/public/images/RandomPage.png">Sample Tic-Tac-Toe</img>
+</div>
 
 ### Requirement
 1. The display grid should be an HTML table. The table must be generated only using JavaScript and without using the document.write() function to output the table tags.
