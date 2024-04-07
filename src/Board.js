@@ -9,7 +9,7 @@ export function Board({ url }) {
             try {
                 const response = await fetch(url);
                 const json = await response.json();
-                setSquares(json);
+                setSquares(json.rows);
                 // console.log(squares);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -17,12 +17,14 @@ export function Board({ url }) {
         };
 
         fetchData();
-    }, [squares]);
+    }, [url]);
 
-    const handleClick = (rowIndex, cellIndex) => {
+    const handleClick = (rowIndex, colIndex) => {
         setSquares(prevSquares => {
             const newSquares = [...prevSquares];
-            const square = newSquares[rowIndex][cellIndex];
+            const square = newSquares[rowIndex][colIndex];
+            let squareid='square'+rowIndex+'-'+colIndex;
+            const square_element =document.getElementById(squareid);
             if (square.currentState === 0) {
                 square.currentState = 1;
             } else if (square.currentState === 1) {
@@ -30,29 +32,31 @@ export function Board({ url }) {
             } else if (square.currentState === 2) {
                 square.currentState = 0;
             }
+            setBackground(square.currentState,square_element);
             return newSquares;
         });
     };
 
-    // const testBoard = squares.map((row, rowIndex) => {
-    //     return (
-    //         <div key={rowIndex} className='board-row'>
-    //             {row.map((cell, cellIndex) => (
-    //                 <Square
-    //                     key={cellIndex}
-    //                     value={cell.value}
-    //                     squareId={`${rowIndex}-${cellIndex}`}
-    //                     onSquareClick={() => handleClick(rowIndex, cellIndex)}
-    //                 />
-    //             ))}
-    //         </div>
-    //     );
-    // });
+
+    const squareBoard = squares.map((row, rowIndex) => {
+        return (
+            <div key={rowIndex} className='board-row'>
+                {row.map((cell, colIndex) => (
+                    <Square
+                        key={colIndex}
+                        value={cell.value}
+                        squareId={`${rowIndex}-${colIndex}`}
+                        onSquareClick={() => handleClick(rowIndex, colIndex)}
+                    />
+                ))}
+            </div>
+        );
+    });
 
     return (
         <div>
             <h1>test</h1>
-
+            {squareBoard}
         </div>
     );
 }
@@ -66,12 +70,12 @@ export function hightlightRow(row) {
     });
 }
 
-export function setBackground(currentState, cell) {
+export function setBackground(currentState, square) {
     if (currentState === 0) {
-        cell.style.backgroundColor = "#aaaaaa";
+        square.style.backgroundColor = "#aaaaaa";
     } else if (currentState === 1) {
-        cell.style.backgroundColor = "#003399";
+        square.style.backgroundColor = "#003399";
     } else if (currentState === 2) {
-        cell.style.backgroundColor = "white";
+        square.style.backgroundColor = "white";
     }
 }
