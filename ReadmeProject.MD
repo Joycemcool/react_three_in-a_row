@@ -55,9 +55,9 @@
 1. Most of the requirement and content are from Delano Marques's course *Client side Technology*
 
 ## About how to write a readme
- [Reference article :what-is-readme-md-file](https://www.geeksforgeeks.org/what-is-readme-md-file/)
- [Static Badge](https://shields.io/badges)
- [Markdownguide](https://www.markdownguide.org/basic-syntax/#reference-style-links )
+![Reference article :what-is-readme-md-file](https://www.geeksforgeeks.org/what-is-readme-md-file/)
+![Static Badge](https://shields.io/badges)
+![Markdownguide](https://www.markdownguide.org/basic-syntax/#reference-style-links )
 
 ## Links
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
