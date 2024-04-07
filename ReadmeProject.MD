@@ -18,11 +18,11 @@
 2. The React application will use the API data from both the original sample and random links.
 3. The React application will make use of React Routing to allow both the sample game grid and a random one to be chosen via links.
 
-<div align="center">
-    <img src="./three-in-a-row/public/images/HomePage.png">Sample Tic-Tac-Toe</img>
+![HomePage](./three-in-a-row/public/images/HomePage.png)
+    <!-- <img src="./three-in-a-row/public/images/HomePage.png">Sample Tic-Tac-Toe</img>
     <img src="./three-in-a-row/public/images/SamplePage.png">Sample Tic-Tac-Toe</img>
-    <img src="./three-in-a-row/public/images/RandomPage.png">Sample Tic-Tac-Toe</img>
-</div>
+    <img src="./three-in-a-row/public/images/RandomPage.png">Sample Tic-Tac-Toe</img> -->
+
 
 ### Requirement
 1. The display grid should be an HTML table. The table must be generated only using JavaScript and without using the document.write() function to output the table tags.
@@ -55,14 +55,14 @@
 1. Most of the requirement and content are from Delano Marques's course *Client side Technology*
 
 ## About how to write a readme
-![Reference article :what-is-readme-md-file](https://www.geeksforgeeks.org/what-is-readme-md-file/)
-![Static Badge](https://shields.io/badges)
-![Markdownguide](https://www.markdownguide.org/basic-syntax/#reference-style-links )
+[Reference article :what-is-readme-md-file](https://www.geeksforgeeks.org/what-is-readme-md-file/)
+[Static Badge](https://shields.io/badges)
+[Markdownguide](https://www.markdownguide.org/basic-syntax/#reference-style-links )
 
 ## Links
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/joycedingcanada
-[youtube-shield]: https://img.shields.io/badge/-Youtube-black.svg?style=for-the-badge&logo=youtube&colorB=555
-[youtube-url]: https://www.youtube.com/@WhyHowJoyce
+[linkedin-shield](https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555)
+[linkedin-url](https://linkedin.com/in/joycedingcanada)
+[youtube-shield](https://img.shields.io/badge/-Youtube-black.svg?style=for-the-badge&logo=youtube&colorB=555)
+[youtube-url](https://www.youtube.com/@WhyHowJoyce)
 [portfolio-shield]: https://img.shields.io/badge/-JoyceDing-black.svg?style=for-the-badge&colorB=555
 [portfolio-url]: https://main--joyceding.netlify.app/
