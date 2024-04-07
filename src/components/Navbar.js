@@ -4,18 +4,17 @@ import { Nav, NavLink } from "./NavbarElements";
 const Navbar = () => {
     return (
         <>
-
             <h1 style={{ textAlign: 'center' }}>React-based Three-in-a-Row Game</h1>
             <Nav>
                 
                     <NavLink to="/home" activeStyle>
-                        Home
+                        Home |  
                     </NavLink>
                     <NavLink to="/sample" activeStyle>
-                        Sample page
+                        Sample page |  
                     </NavLink>
                     <NavLink to="/random" activeStyle>
-                        Random page
+                        Random page 
                     </NavLink>
             </Nav>
         </>

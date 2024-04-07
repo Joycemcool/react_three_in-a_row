@@ -1,11 +1,13 @@
 import React from "react";
- 
+import { Game } from "../Game";
+
 const Sample = () => {
     return (
-        <div>
+        <div  style={{ margin: '0 auto', textAlign: 'center' }}>
             <h1>
                 Sample Page
             </h1>
+            <Game/>
         </div>
     );
 };
