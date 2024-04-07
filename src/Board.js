@@ -10,14 +10,14 @@ export function Board({ url }) {
                 const response = await fetch(url);
                 const json = await response.json();
                 setSquares(json);
-                console.log(squares);
+                // console.log(squares);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
 
         fetchData();
-    }, [url]);
+    }, [squares]);
 
     const handleClick = (rowIndex, cellIndex) => {
         setSquares(prevSquares => {
@@ -34,25 +34,25 @@ export function Board({ url }) {
         });
     };
 
-    const testBoard = squares.rows.map((row, rowIndex) =>{
-        
-    })
+    // const testBoard = squares.map((row, rowIndex) => {
+    //     return (
+    //         <div key={rowIndex} className='board-row'>
+    //             {row.map((cell, cellIndex) => (
+    //                 <Square
+    //                     key={cellIndex}
+    //                     value={cell.value}
+    //                     squareId={`${rowIndex}-${cellIndex}`}
+    //                     onSquareClick={() => handleClick(rowIndex, cellIndex)}
+    //                 />
+    //             ))}
+    //         </div>
+    //     );
+    // });
 
     return (
         <div>
             <h1>test</h1>
-            {/* {squares.rows.map((row, rowIndex) => (
-                <div key={rowIndex} className='board-row'>
-                    {row.map((cell, cellIndex) => (
-                        <Square
-                            key={cellIndex}
-                            value={cell.value}
-                            squareId={`${rowIndex}-${cellIndex}`}
-                            onSquareClick={() => handleClick(rowIndex, cellIndex)}
-                        />
-                    ))}
-                </div>
-            ))} */}
+
         </div>
     );
 }

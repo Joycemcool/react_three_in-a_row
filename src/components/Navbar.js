@@ -7,13 +7,13 @@ const Navbar = () => {
             <h1 style={{ textAlign: 'center' }}>React-based Three-in-a-Row Game</h1>
             <Nav>
                 
-                    <NavLink to="/home" activeStyle>
+                    <NavLink to="/home" >
                         Home |  
                     </NavLink>
-                    <NavLink to="/sample" activeStyle>
+                    <NavLink to="/sample" >
                         Sample page |  
                     </NavLink>
-                    <NavLink to="/random" activeStyle>
+                    <NavLink to="/random">
                         Random page 
                     </NavLink>
             </Nav>
