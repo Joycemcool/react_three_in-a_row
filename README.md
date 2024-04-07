@@ -60,9 +60,9 @@
 [Markdownguide](https://www.markdownguide.org/basic-syntax/#reference-style-links )
 
 ## Links
-[linkedin-shield](https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555)
-[linkedin-url](https://linkedin.com/in/joycedingcanada)
-[youtube-shield](https://img.shields.io/badge/-Youtube-black.svg?style=for-the-badge&logo=youtube&colorB=555)
-[youtube-url](https://www.youtube.com/@WhyHowJoyce)
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/joycedingcanada
+[youtube-shield]: https://img.shields.io/badge/-Youtube-black.svg?style=for-the-badge&logo=youtube&colorB=555
+[youtube-url]: https://www.youtube.com/@WhyHowJoyce
 [portfolio-shield]: https://img.shields.io/badge/-JoyceDing-black.svg?style=for-the-badge&colorB=555
 [portfolio-url]: https://main--joyceding.netlify.app/
