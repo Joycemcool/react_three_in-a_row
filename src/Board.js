@@ -1,97 +1,77 @@
-import {Square} from './Square.js'
+import React, { useState, useEffect } from 'react';
+import Square from './Square';
 
-export function Board({ xIsNext, squares, onPlay }) {
+export function Board({ url }) {
+    const [squares, setSquares] = useState([]);
 
-    function handleClick(i) {
-      if (squares[i] || calculateWinner(squares)) {
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(url);
+                const json = await response.json();
+                setSquares(json);
+                console.log(squares);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
 
-        return;
-      }
-      const nextSquares = squares.slice();
-      if (xIsNext) {
-        nextSquares[i] = "X";
+        fetchData();
+    }, [url]);
 
-      } else {
-        nextSquares[i] = "O";
+    const handleClick = (rowIndex, cellIndex) => {
+        setSquares(prevSquares => {
+            const newSquares = [...prevSquares];
+            const square = newSquares[rowIndex][cellIndex];
+            if (square.currentState === 0) {
+                square.currentState = 1;
+            } else if (square.currentState === 1) {
+                square.currentState = 2;
+            } else if (square.currentState === 2) {
+                square.currentState = 0;
+            }
+            return newSquares;
+        });
+    };
 
-      }
+    const testBoard = squares.rows.map((row, rowIndex) =>{
+        
+    })
 
-      onPlay(nextSquares);
-    }
-  
-    const xCount = squares.reduce((count, square)=> {
-        if(square === 'X'){
-            return count +1;
-        }
-        return count;
-    }, 0);
+    return (
+        <div>
+            <h1>test</h1>
+            {/* {squares.rows.map((row, rowIndex) => (
+                <div key={rowIndex} className='board-row'>
+                    {row.map((cell, cellIndex) => (
+                        <Square
+                            key={cellIndex}
+                            value={cell.value}
+                            squareId={`${rowIndex}-${cellIndex}`}
+                            onSquareClick={() => handleClick(rowIndex, cellIndex)}
+                        />
+                    ))}
+                </div>
+            ))} */}
+        </div>
+    );
+}
 
-    const oCount = squares.reduce((count, square)=> {
-        if(square === 'O'){
-            return count +1;
-        }
-        return count;
-    }, 0);
-
-    const winner = calculateWinner(squares);
-    let status;
-    if (winner) {
-      status = "Winner: " + winner;
-
-    } else {
-      status = "Next player: " + (xIsNext ? "X" : "O");
-    }
-    
-    return <>
-            <div className="status">{status}</div>
-            <div className="board-row">
-              <Square value={squares[0]} squareId={0} onSquareClick={() => handleClick(0)} />
-              <Square value={squares[1]} squareId={1} onSquareClick={() => handleClick(1)} />
-              <Square value={squares[2]} squareId={2} onSquareClick={() => handleClick(2)} />
-            </div>
-            <div className="board-row">
-              <Square value={squares[3]} squareId={3} onSquareClick={() => handleClick(3)} />
-              <Square value={squares[4]} squareId={4} onSquareClick={() => handleClick(4)} />
-              <Square value={squares[5]} squareId={5} onSquareClick={() => handleClick(5)} />
-            </div>
-            <div className="board-row">
-              <Square value={squares[6]} squareId={6} onSquareClick={() => handleClick(6)} />
-              <Square value={squares[7]} squareId={7} onSquareClick={() => handleClick(7)} />
-              <Square value={squares[8]} squareId={8} onSquareClick={() => handleClick(8)} />
-            </div>
-            <div>X Move Count:{xCount}</div>
-            <div>O Move Count: {oCount}</div>
-          </>
-  }
-
-  
-function calculateWinner(squares) {
-    const lines = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6]
-    ];
-    for (let i = 0; i < lines.length; i++) {
-      const [a, b, c] = lines[i];
-      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        hightlightRow(lines[i])
-        return squares[a];
-      }
-    }
-    return null;
-  }
-
-  function hightlightRow(row){
+export function hightlightRow(row) {
     console.log(row);
     row.forEach(element => {
         console.log(element);
-        let squareid='square'+element;
+        let squareid = 'square' + element;
         document.getElementById(squareid).style.background = 'yellow';
     });
 }
-  
+
+export function setBackground(currentState, cell) {
+    if (currentState === 0) {
+        cell.style.backgroundColor = "#aaaaaa";
+    } else if (currentState === 1) {
+        cell.style.backgroundColor = "#003399";
+    } else if (currentState === 2) {
+        cell.style.backgroundColor = "white";
+    }
+}
