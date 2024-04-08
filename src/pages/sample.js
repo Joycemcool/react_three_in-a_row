@@ -11,7 +11,7 @@ const Sample = () => {
             <h1>
                 Sample Page
             </h1>
-            <button >Reload</button>  
+           
 
             <Board url={sample_url}/>
         </div>

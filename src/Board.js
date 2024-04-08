@@ -3,6 +3,7 @@ import Square from './Square';
 
 export function Board({ url }) {
     const [squares, setSquares] = useState([]);
+    const [reload, setReload] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -17,26 +18,31 @@ export function Board({ url }) {
         };
 
         fetchData();
-    }, [url]);
+    }, [url,reload]);
 
     const handleClick = (rowIndex, colIndex) => {
         setSquares(prevSquares => {
             const newSquares = [...prevSquares];
             const square = newSquares[rowIndex][colIndex];
-            let squareid='square'+rowIndex+'-'+colIndex;
+            const squareid='square'+rowIndex+'-'+colIndex;
             const square_element =document.getElementById(squareid);
-            if (square.currentState === 0) {
-                square.currentState = 1;
-            } else if (square.currentState === 1) {
-                square.currentState = 2;
-            } else if (square.currentState === 2) {
-                square.currentState = 0;
+            if(square.canToggle===true){
+                if (square.currentState === 0) {
+                    square.currentState = 1;
+                } else if (square.currentState === 1) {
+                    square.currentState = 2;
+                } else if (square.currentState === 2) {
+                    square.currentState = 0;
+                }
+                setBackground(square.currentState,square_element);                
             }
-            setBackground(square.currentState,square_element);
             return newSquares;
         });
     };
 
+    const handleReload = () => {
+        setReload(!reload); 
+    };
 
     const squareBoard = squares.map((row, rowIndex) => {
         return (
@@ -44,7 +50,7 @@ export function Board({ url }) {
                 {row.map((cell, colIndex) => (
                     <Square
                         key={colIndex}
-                        value={cell.value}
+                        value={cell.currentState}
                         squareId={`${rowIndex}-${colIndex}`}
                         onSquareClick={() => handleClick(rowIndex, colIndex)}
                     />
@@ -55,8 +61,14 @@ export function Board({ url }) {
 
     return (
         <div>
-            <h1>test</h1>
+            <button onClick={handleReload}>Reload</button>  
             {squareBoard}
+            <label>
+                <input type="checkbox" checked={reload} onChange={handleReload} />
+                Show mistake
+            </label>    
+             <button >Check</button>  
+
         </div>
     );
 }

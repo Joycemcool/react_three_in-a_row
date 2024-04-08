@@ -80,7 +80,7 @@
   .status {
     margin-bottom: 10px;
   }
-  .game {
+  .board-row {
     display: flex;
     flex-direction: row;
     margin: auto;
