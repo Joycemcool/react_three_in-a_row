@@ -4,6 +4,7 @@ import Square from './Square';
 export function Board({ url }) {
     const [squares, setSquares] = useState([]);
     const [reload, setReload] = useState(false);
+    const [isChecked, setIsChecked] = useState(false)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -40,6 +41,47 @@ export function Board({ url }) {
         });
     };
 
+    const checkHandler = () => {
+        setIsChecked(!isChecked)
+    let squaresBtn = document.querySelectorAll('.square');  
+    console.log(squaresBtn);
+
+        // let mistakeSquares = squares.filter(row => row.filter(square => square.currentState !== 0 && square.currentState !== square.correctState).length>0);
+        let mistakeSquares = [];
+        for(let i=0; i<squares.length; i++){
+            for(let j=0; j<squares[i].length;j++){
+                const square = squares[i][j];
+                if(square.currentState !== 0 && square.currentState !== square.correctState){
+                    mistakeSquares.push([i,j]);
+                }
+            }
+        }
+        mistakeSquares.forEach(square => document.getElementById(`square${square[0]}-${square[1]}`).textContent = "!")
+        console.log(mistakeSquares);
+      }
+
+    const checkPuzzle = () => {
+        const isCompleted =()=>squares.every((row) => row.every(square => square.currentState === square.correctState));
+        const hasMistake = () => squares.some(
+            (row) => row.some(
+                (square) =>
+                     square.currentState !== 0 && square.currentState !== square.correctState)
+        );
+        
+        let message;;
+        if(isCompleted()){
+            message = "You did it!!";
+        }
+        else if(hasMistake()){            
+            message="Something is wrong";
+        }
+        else{
+            message = "So far so good";
+        } 
+        alert(message);       
+        return; 
+    }
+
     const handleReload = () => {
         setReload(!reload); 
     };
@@ -64,10 +106,10 @@ export function Board({ url }) {
             <button onClick={handleReload}>Reload</button>  
             {squareBoard}
             <label>
-                <input type="checkbox" checked={reload} onChange={handleReload} />
+                <input type="checkbox" checked={isChecked} onChange={checkHandler} />
                 Show mistake
             </label>    
-             <button >Check</button>  
+             <button onClick={checkPuzzle}>Check Puzzel</button>  
 
         </div>
     );

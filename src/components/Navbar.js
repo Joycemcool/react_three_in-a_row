@@ -7,7 +7,7 @@ const Navbar = () => {
             <h1 style={{ textAlign: 'center' }}>React-based Three-in-a-Row Game</h1>
             <Nav>
                 
-                    <NavLink to="/home" >
+                    <NavLink to="/" >
                         Home |  
                     </NavLink>
                     <NavLink to="/sample" >
