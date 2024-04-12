@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from "axios";
 import Square from './Square';
 
 export function Board({ url }) {
@@ -7,19 +8,41 @@ export function Board({ url }) {
     const [isChecked, setIsChecked] = useState(false)
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(url);
-                const json = await response.json();
-                setSquares(json.rows);
-                // console.log(squares);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
+        axios.get(url).then((response) => {
+            setSquares(response.data.rows);           
+        })
+    },[url,reload])
 
-        fetchData();
-    }, [url,reload]);
+    useEffect(() => {
+        // Logic related to isChecked state
+        if (isChecked) {
+            let mistakeSquares = [];
+            for (let i = 0; i < squares.length; i++) {
+                for (let j = 0; j < squares[i].length; j++) {
+                    const square = squares[i][j];
+                    if (square.currentState !== 0 && square.currentState !== square.correctState) {
+                        mistakeSquares.push([i, j]);
+                    }
+                }
+            }
+            mistakeSquares.forEach(square => document.getElementById(`square${square[0]}-${square[1]}`).textContent = "!");
+        } else {
+            let squaresBtn = document.querySelectorAll('.square');
+            squaresBtn.forEach(btn => btn.textContent = "")
+        }
+    }, [isChecked, squares]); 
+
+    // useEffect(() => {
+    //     // Logic to update textContent when currentState changes
+    //     squares.forEach((row, i) => {
+    //         row.forEach((square, j) => {
+    //             const element = document.getElementById(`square${i}-${j}`);
+    //             if (element && square.currentState !== square.correctState && square.currentState !== 0) {
+    //                 element.textContent = "!";
+    //             }
+    //         });
+    //     });
+    // }, [squares]);
 
     const handleClick = (rowIndex, colIndex) => {
         setSquares(prevSquares => {
@@ -41,25 +64,34 @@ export function Board({ url }) {
         });
     };
 
+    // const checkHandler = () => {
+    //     setIsChecked(prevIsChecked =>{
+    //         const newIsChecked = !prevIsChecked;
+    //         return newIsChecked;
+    //     })
+    //     console.log(isChecked);
+    //     if(isChecked){
+    //         let mistakeSquares = [];
+    //         for(let i=0; i<squares.length; i++){
+    //             for(let j=0; j<squares[i].length;j++){
+    //                 const square = squares[i][j];
+    //                 if(square.currentState !== 0 && square.currentState !== square.correctState){
+    //                     mistakeSquares.push([i,j]);
+    //                 }
+    //             }
+    //         }
+    //         mistakeSquares.forEach(square => document.getElementById(`square${square[0]}-${square[1]}`).textContent = "!")   
+    //     }
+    //     else{
+    //         let squaresBtn = document.querySelectorAll('.square');  
+    //         squaresBtn.textContent = "";
+    //     }
+
+    // }
+    
     const checkHandler = () => {
-        setIsChecked(!isChecked)
-    let squaresBtn = document.querySelectorAll('.square');  
-    console.log(squaresBtn);
-
-        // let mistakeSquares = squares.filter(row => row.filter(square => square.currentState !== 0 && square.currentState !== square.correctState).length>0);
-        let mistakeSquares = [];
-        for(let i=0; i<squares.length; i++){
-            for(let j=0; j<squares[i].length;j++){
-                const square = squares[i][j];
-                if(square.currentState !== 0 && square.currentState !== square.correctState){
-                    mistakeSquares.push([i,j]);
-                }
-            }
-        }
-        mistakeSquares.forEach(square => document.getElementById(`square${square[0]}-${square[1]}`).textContent = "!")
-        console.log(mistakeSquares);
-      }
-
+        setIsChecked(!isChecked);
+    }
     const checkPuzzle = () => {
         const isCompleted =()=>squares.every((row) => row.every(square => square.currentState === square.correctState));
         const hasMistake = () => squares.some(

@@ -1,5 +1,4 @@
 import React from 'react'
-import { setBackground } from './Board';
 
 const Square = ({value, squareId, onSquareClick}) => {
     const square_Id = 'square'+squareId;
@@ -16,6 +15,6 @@ const Square = ({value, squareId, onSquareClick}) => {
                 break;
     } 
     return <button className="square" id={square_Id} onClick={onSquareClick} style={{backgroundColor:color}}
-            >{value}</button>;
+            ></button>;
 }
 export default Square
