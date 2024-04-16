@@ -14,7 +14,6 @@ export function Board({ url }) {
     },[url,reload])
 
     useEffect(() => {
-        // Logic related to isChecked state
         if (isChecked) {
             let mistakeSquares = [];
             for (let i = 0; i < squares.length; i++) {
@@ -32,17 +31,6 @@ export function Board({ url }) {
         }
     }, [isChecked, squares]); 
 
-    // useEffect(() => {
-    //     // Logic to update textContent when currentState changes
-    //     squares.forEach((row, i) => {
-    //         row.forEach((square, j) => {
-    //             const element = document.getElementById(`square${i}-${j}`);
-    //             if (element && square.currentState !== square.correctState && square.currentState !== 0) {
-    //                 element.textContent = "!";
-    //             }
-    //         });
-    //     });
-    // }, [squares]);
 
     const handleClick = (rowIndex, colIndex) => {
         setSquares(prevSquares => {
@@ -63,31 +51,6 @@ export function Board({ url }) {
             return newSquares;
         });
     };
-
-    // const checkHandler = () => {
-    //     setIsChecked(prevIsChecked =>{
-    //         const newIsChecked = !prevIsChecked;
-    //         return newIsChecked;
-    //     })
-    //     console.log(isChecked);
-    //     if(isChecked){
-    //         let mistakeSquares = [];
-    //         for(let i=0; i<squares.length; i++){
-    //             for(let j=0; j<squares[i].length;j++){
-    //                 const square = squares[i][j];
-    //                 if(square.currentState !== 0 && square.currentState !== square.correctState){
-    //                     mistakeSquares.push([i,j]);
-    //                 }
-    //             }
-    //         }
-    //         mistakeSquares.forEach(square => document.getElementById(`square${square[0]}-${square[1]}`).textContent = "!")   
-    //     }
-    //     else{
-    //         let squaresBtn = document.querySelectorAll('.square');  
-    //         squaresBtn.textContent = "";
-    //     }
-
-    // }
     
     const checkHandler = () => {
         setIsChecked(!isChecked);

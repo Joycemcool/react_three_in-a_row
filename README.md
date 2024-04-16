@@ -53,6 +53,7 @@
 1. Node >= 14 on your local development machine
 2. `npm i react-router-dom --save styled-components`
 3. `npm install react-icons --save`
+4. `npm install axios` to fetch data
 
 ### Editor
 * VS Code
