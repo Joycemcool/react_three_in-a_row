@@ -99,7 +99,11 @@ export function Board({ url }) {
     return (
         <div>
             <button onClick={handleReload}>Reload</button>  
+            <div className="board-container">
+                
             {squareBoard}
+            
+            </div>
             <label>
                 <input type="checkbox" checked={isChecked} onChange={checkHandler} />
                 Show mistake

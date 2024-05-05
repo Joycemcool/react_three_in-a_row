@@ -57,6 +57,7 @@
   }
   
   .square {
+  
     background: #fff;
     border: 1px solid #999;
     float: left;
@@ -71,6 +72,15 @@
     width: 60px;
   }
   
+.board-container {
+    margin: 10px 0px;
+}
+  .board-row:after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+
   .board-row:after {
     clear: both;
     content: '';
