@@ -14,4 +14,4 @@ const Sample = () => {
  
 export default Sample;
 
-// Credit https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
+// Credit https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/ dee
